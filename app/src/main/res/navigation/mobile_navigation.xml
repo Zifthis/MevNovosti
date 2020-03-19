@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.mevnovosti.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_racunarstvo"
+        android:name="com.example.mevnovosti.ui.racunarstvo.RacunarstvoFragment"
+        android:label="@string/menu_racunarstvo"
+        tools:layout="@layout/fragment_racunarstvo" />
+
+    <fragment
+        android:id="@+id/nav_odrzivi_razvoj"
+        android:name="com.example.mevnovosti.ui.odrzivi_razvoj.OdrziviRazvojFragment"
+        android:label="@string/menu_odrzivi_razvoj"
+        tools:layout="@layout/fragment_odrzivi_razvoj" />
+
+    <fragment
+        android:id="@+id/nav_menadzment"
+        android:name="com.example.mevnovosti.ui.menadzment.MenadzmentFragment"
+        android:label="@string/menu_menadzment"
+        tools:layout="@layout/fragment_menadzment" />
+</navigation>

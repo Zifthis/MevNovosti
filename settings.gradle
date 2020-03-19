@@ -1,0 +1,2 @@
+rootProject.name='MEV Novosti'
+include ':app'
