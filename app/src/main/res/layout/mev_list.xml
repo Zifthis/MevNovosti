@@ -91,6 +91,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view" />
 
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandableView"
                 android:layout_width="match_parent"
@@ -136,6 +138,16 @@
                     style="@style/TextAppearance.AppCompat.Body1"
                     app:layout_constraintTop_toBottomOf="@+id/textView_datum_objave"
                     tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/share"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/ic_share_black"
+                    app:layout_constraintBottom_toBottomOf="@+id/expandableView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/expandableView" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

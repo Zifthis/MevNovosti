@@ -1,6 +1,7 @@
 package com.example.mevnovosti.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -63,6 +64,20 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
         holder.textViewDatumObajava.setText(mevArrayListFiltered.get(position).getDatumObjave());
         holder.textViewDatumNovosti.setText(mevArrayListFiltered.get(position).getDatumNovosti());
+
+
+        holder.btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareBody = (String) holder.textViewNaslov.getText();
+                String shareSub = (String) holder.textViewTekst.getText();
+                intent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
+                intent.putExtra(Intent.EXTRA_TEXT,shareSub);
+                context.startActivity(Intent.createChooser(intent,"Podjeli"));
+            }
+        });
 
 
         //expands CardView on button click
@@ -140,7 +155,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
         public TextView textViewNaslov, textViewPodnaslov, textViewTekst, textViewDatumObajava, textViewDatumNovosti;
         public ImageView imageView, circleImage;
-        public Button button;
+        public Button button, btnShare;
         public CardView cardView;
         public ConstraintLayout expandableView;
 
@@ -152,6 +167,9 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
             expandableView = (ConstraintLayout) itemView.findViewById(R.id.expandableView);
             button = (Button) itemView.findViewById(R.id.btn);
             cardView = (CardView) itemView.findViewById(R.id.cardView);
+
+            //share button
+            btnShare = (Button) itemView.findViewById(R.id.share);
 
             //always visible items
             textViewNaslov = (TextView) itemView.findViewById(R.id.textView_naslov);
