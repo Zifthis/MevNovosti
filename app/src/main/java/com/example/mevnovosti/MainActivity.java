@@ -2,12 +2,8 @@ package com.example.mevnovosti;
 
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ArrayList<MevModel> opcaLista = new ArrayList<>();
@@ -52,11 +48,12 @@ public class MainActivity extends AppCompatActivity{
     private FragmentManager manager = null;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -89,7 +86,6 @@ public class MainActivity extends AppCompatActivity{
         ft.replace(R.id.nav_host_fragment, fragment).commit();
 
 
-
         getNovosi();
 
     }
@@ -101,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
         getMenuInflater().inflate(R.menu.main, menu);
 
         MenuItem searchItem = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView)searchItem.getActionView();
+        SearchView searchView = (SearchView) searchItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

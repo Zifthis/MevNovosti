@@ -1,7 +1,10 @@
 package com.example.mevnovosti.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.MevModel;
 
+
 import java.util.ArrayList;
 
 public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> implements Filterable {
@@ -30,11 +34,13 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
     private ArrayList<MevModel> mevModelArrayList;
     private ArrayList<MevModel> mevArrayListFiltered;
 
+
     //the constructor keeps Context and ArrayList as parametars
     public MevAdapter(Context context, ArrayList mevModelArrayList) {
         this.context = context;
         this.mevModelArrayList = mevModelArrayList;
         this.mevArrayListFiltered = mevModelArrayList;
+
     }
 
 
@@ -57,7 +63,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
         holder.cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale));
 
-
         //biding views
         holder.textViewNaslov.setText(mevArrayListFiltered.get(position).getNaslov());
         holder.textViewPodnaslov.setText(mevArrayListFiltered.get(position).getPodNaslov());
@@ -66,18 +71,22 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewDatumNovosti.setText(mevArrayListFiltered.get(position).getDatumNovosti());
 
 
+        //hooking up share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, "MEV OBAVIJEST: " +
+                        holder.textViewNaslov.getText() +
+                        holder.getAdapterPosition() +
+                        "\nSADRZAJ: " +
+                        holder.textViewTekst.getText() +
+                        "\nLINK: https://www.mev.hr/studenti/");
                 intent.setType("text/plain");
-                String shareBody = (String) holder.textViewNaslov.getText();
-                String shareSub = (String) holder.textViewTekst.getText();
-                intent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
-                intent.putExtra(Intent.EXTRA_TEXT,shareSub);
                 context.startActivity(Intent.createChooser(intent,"Podjeli"));
             }
         });
+
 
 
         //expands CardView on button click
@@ -87,11 +96,11 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
                 if (holder.expandableView.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
                     holder.expandableView.setVisibility(View.VISIBLE);
-                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_down);
                 } else {
                     TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
                     holder.expandableView.setVisibility(View.GONE);
-                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
+                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_up);
                 }
             }
         });
@@ -105,12 +114,13 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
     }
 
-
+    //size of fragmets
     @Override
     public int getItemCount() {
         return mevArrayListFiltered.size();
     }
 
+    //SEARCH filter by input string
     @Override
     public Filter getFilter() {
 

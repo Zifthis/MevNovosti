@@ -53,7 +53,7 @@
                     android:id="@+id/circleImage"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/mev_logo"
+                    android:src="@drawable/mev_icon"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -63,6 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Naslov"
+                android:textStyle="bold"
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_marginStart="12dp"
                 app:layout_constraintStart_toEndOf="@+id/view"
@@ -74,6 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Podnaslov"
+                android:textStyle="italic"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/datum"
                 android:layout_marginStart="12dp"
@@ -86,7 +88,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:background="@drawable/ic_keyboard_arrow_down"
                 app:layout_constraintBottom_toBottomOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view" />
@@ -110,9 +112,12 @@
                     android:id="@+id/textView_tekst"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Sadrzaj obajesti"
+                    android:text="Poštovani studenti"
                     android:layout_marginStart="32dp"
+                    android:paddingRight="35dp"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/_13dp"
+                    android:textStyle="italic"
                     style="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintBottom_toTopOf="@+id/textView_datum_objave"
                     tools:ignore="MissingConstraints" />
@@ -122,7 +127,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2020-12-03"
+                    android:textSize="@dimen/_8dp"
                     android:layout_marginStart="32dp"
+                    android:paddingTop="@dimen/_8dp"
                     android:textColor="@color/datum"
                     style="@style/TextAppearance.AppCompat.Body1"
                     app:layout_constraintTop_toBottomOf="@+id/textView_tekst"
@@ -133,6 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2020-12-03"
+                    android:textSize="@dimen/_8dp"
                     android:layout_marginStart="32dp"
                     android:textColor="@color/datum"
                     style="@style/TextAppearance.AppCompat.Body1"
@@ -144,10 +152,11 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
-                    android:background="@drawable/ic_share_black"
+                    android:background="@drawable/ic_share_24dp"
                     app:layout_constraintBottom_toBottomOf="@+id/expandableView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/expandableView" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
