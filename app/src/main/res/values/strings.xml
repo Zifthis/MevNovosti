@@ -13,6 +13,6 @@
     <string name="menu_menadzment">Menadžment turizma i sporta </string>
     <string name="facbook_id">242127576821927</string>
     <string name="facebook_login_protocol_scheme">fb242127576821927</string>
-
+    <string name="web_page">www.mev.hr</string>
     <string name="home_second">Home Second</string>
 </resources>

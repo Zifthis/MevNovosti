@@ -1,7 +1,6 @@
 package com.example.mevnovosti.service;
 
 
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,13 +12,13 @@ public class RetrofitInstance {
 
     public static Retrofit getModel() {
 
-        if(retrofit == null){
+        if (retrofit == null) {
 
-        retrofit = new Retrofit
-                .Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            retrofit = new Retrofit
+                    .Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
 
         return retrofit;

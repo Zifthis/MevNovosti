@@ -1,10 +1,7 @@
 package com.example.mevnovosti.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -24,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.MevModel;
-
 
 import java.util.ArrayList;
 
@@ -60,7 +56,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewNaslov.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.textViewPodnaslov.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.circleImage.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
-
         holder.cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale));
 
         //biding views
@@ -71,22 +66,21 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewDatumNovosti.setText(mevArrayListFiltered.get(position).getDatumNovosti());
 
 
-        //hooking up share button with code
+        //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, "MEV OBAVIJEST: " +
+                intent.putExtra(Intent.EXTRA_TEXT, "MEV OBAVIJEST: \n\n\n" +
                         holder.textViewNaslov.getText() +
                         holder.getAdapterPosition() +
                         "\nSADRZAJ: " +
                         holder.textViewTekst.getText() +
-                        "\nLINK: https://www.mev.hr/studenti/");
+                        "\n\n\nhttps://www.mev.hr/studenti/");
                 intent.setType("text/plain");
-                context.startActivity(Intent.createChooser(intent,"Podjeli"));
+                context.startActivity(Intent.createChooser(intent, "Podjeli"));
             }
         });
-
 
 
         //expands CardView on button click
@@ -129,12 +123,12 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
             protected FilterResults performFiltering(CharSequence constraint) {
 
                 String string = constraint.toString();
-                if(string.isEmpty()){
+                if (string.isEmpty()) {
                     mevArrayListFiltered = mevModelArrayList;
-                }else {
+                } else {
                     ArrayList<MevModel> IsFiltered = new ArrayList<>();
-                    for(MevModel row : mevModelArrayList){
-                        if(row.getNaslov().toLowerCase().contains(string.toLowerCase())){
+                    for (MevModel row : mevModelArrayList) {
+                        if (row.getNaslov().toLowerCase().contains(string.toLowerCase())) {
                             IsFiltered.add(row);
                         }
                     }
@@ -155,7 +149,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
                 mevArrayListFiltered = (ArrayList<MevModel>) results.values;
                 notifyDataSetChanged();
-
             }
         };
     }

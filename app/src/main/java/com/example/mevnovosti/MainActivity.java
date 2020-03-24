@@ -8,6 +8,7 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<MevModel> orLista = new ArrayList<>();
     private ArrayList<MevModel> listMev;
     private Fragment fragment = null;
-    private MevAdapter adapter;
     private FragmentTransaction ft = null;
     private FragmentManager manager = null;
 
@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        //adapter
-        adapter = new MevAdapter(this, MyApp.getInstance().getMevModels());
-
         //HomeFragment load on app start
         fragment = new HomeFragment();
         manager = getSupportFragmentManager();
@@ -90,30 +87,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //search
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
         MenuItem searchItem = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                if (MyApp.getInstance().getHomeMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getHomeMevAdapter()).getFilter().filter(query);
+                }
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
+                //called when you type each letter in search
+                if (MyApp.getInstance().getHomeMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getHomeMevAdapter()).getFilter().filter(newText);
+                }
                 return false;
             }
         });
 
         return true;
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {

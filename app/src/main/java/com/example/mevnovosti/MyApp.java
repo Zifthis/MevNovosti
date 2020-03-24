@@ -1,13 +1,16 @@
 package com.example.mevnovosti;
 
 import android.app.Application;
+
 import androidx.fragment.app.Fragment;
+
+import com.example.mevnovosti.adapter.MevAdapter;
 import com.example.mevnovosti.model.MevModel;
+
 import java.util.ArrayList;
 
 
-
-public class MyApp extends Application  {
+public class MyApp extends Application {
 
     public static MyApp instance = null;
     private Fragment fragment;
@@ -26,6 +29,19 @@ public class MyApp extends Application  {
     public ArrayList<MevModel> mevRac = new ArrayList<>();
     public ArrayList<MevModel> mevOr = new ArrayList<>();
     public ArrayList<MevModel> mevMts = new ArrayList<>();
+
+    //home adapter for search
+    public MevAdapter homeMevAdapter;
+
+    //getter homeAdapter
+    public MevAdapter getHomeMevAdapter() {
+        return homeMevAdapter;
+    }
+
+    //setter homeAdapter
+    public void setHomeMevAdapter(MevAdapter homeMevAdapter) {
+        this.homeMevAdapter = homeMevAdapter;
+    }
 
     public ArrayList<MevModel> getMevOpca() {
         return mevOpca;
