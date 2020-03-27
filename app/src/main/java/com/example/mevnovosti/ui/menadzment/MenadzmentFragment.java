@@ -43,6 +43,7 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
         return root;
     }
 
+
     @Override
     public void onResume() {
         super.onResume();

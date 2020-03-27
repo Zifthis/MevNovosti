@@ -2,6 +2,7 @@ package com.example.mevnovosti.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -14,11 +15,14 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mevnovosti.MyApp;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.MevModel;
 
@@ -29,6 +33,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
     private Context context;
     private ArrayList<MevModel> mevModelArrayList;
     private ArrayList<MevModel> mevArrayListFiltered;
+
 
 
     //the constructor keeps Context and ArrayList as parametars
@@ -64,6 +69,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
         holder.textViewDatumObajava.setText(mevArrayListFiltered.get(position).getDatumObjave());
         holder.textViewDatumNovosti.setText(mevArrayListFiltered.get(position).getDatumNovosti());
+
 
 
         //connecting share button with code
@@ -161,6 +167,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         public Button button, btnShare;
         public CardView cardView;
         public ConstraintLayout expandableView;
+
 
 
         public MevViewHolder(View itemView) {

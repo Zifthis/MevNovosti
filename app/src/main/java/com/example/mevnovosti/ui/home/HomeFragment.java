@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
-
+        MyApp.getInstance().setHomeMevAdapter(adapter);
 
         return root;
     }

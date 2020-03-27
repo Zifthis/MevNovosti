@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //glavana boja
     <color name="blue">#0099CC</color>
     <color name="mevBoja">#0C71C3</color>
     <color name="black">#000000</color>
@@ -8,12 +9,16 @@
     <color name="colorPrimary">#d91248</color>
     <color name="colorPrimaryDark">#d91248</color>
     <color name="colorAccent">#3ad23e</color>
+
     <color name="datum">#8A000000</color>
     <color name="card_bg_color">#f6f6f6</color>
-    <color name="bgColor">#EEEEEE</color>
+    <color name="bgColor">#BBC0C4</color>
     <color name="content_text_color">#999da4</color>
     <color name="white">#FFFFFF</color>
 
-
+    //boja smjerova
+    <color name="racunarstvo">#ADCE82</color>
+    <color name="mts">#3E95C4</color>
+    <color name="razvoj">#DDAB99</color>
 
 </resources>
