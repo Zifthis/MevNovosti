@@ -1,5 +1,7 @@
 package com.example.mevnovosti.ui.menadzment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +20,9 @@ import com.example.mevnovosti.MainActivity;
 import com.example.mevnovosti.MyApp;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.adapter.MevAdapter;
+
+import java.util.Map;
+import java.util.Set;
 
 public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -32,6 +38,7 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
 
         swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe_container_mts);
         swipeRefreshLayout.setOnRefreshListener(this);
+
 
         adapter = new MevAdapter(root.getContext(), MyApp.getInstance().getMevMts());
         recyclerView = root.findViewById(R.id.text_menadzment);

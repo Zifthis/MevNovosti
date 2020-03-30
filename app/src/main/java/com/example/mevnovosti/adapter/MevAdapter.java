@@ -2,7 +2,6 @@ package com.example.mevnovosti.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -15,25 +14,24 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.mevnovosti.MyApp;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.MevModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> implements Filterable {
 
     private Context context;
     private ArrayList<MevModel> mevModelArrayList;
     private ArrayList<MevModel> mevArrayListFiltered;
-
 
 
     //the constructor keeps Context and ArrayList as parametars
@@ -67,9 +65,8 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewNaslov.setText(mevArrayListFiltered.get(position).getNaslov());
         holder.textViewPodnaslov.setText(mevArrayListFiltered.get(position).getPodNaslov());
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
-        holder.textViewDatumObajava.setText(mevArrayListFiltered.get(position).getDatumObjave());
-        holder.textViewDatumNovosti.setText(mevArrayListFiltered.get(position).getDatumNovosti());
-
+        holder.textViewDatumObajava.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
+        holder.textViewDatumNovosti.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumNovosti()));
 
 
         //connecting share button with code
@@ -113,6 +110,28 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
                 .into(holder.imageView);
 
     }
+
+    //time & date formating
+    public static String dateAndTimeFormat(String date) {
+        String newDate = "";
+        try {
+            //timezone change
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat outDF = new SimpleDateFormat("dd.MM.yyyy");
+            outDF.setTimeZone(TimeZone.getDefault());
+            df.setTimeZone(TimeZone.getTimeZone("UTC"));
+            String changed = outDF.format(df.parse(date));
+            newDate = changed;
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(outDF.parse(changed));
+
+            return newDate;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return newDate;
+        }
+    }
+
 
     //size of fragmets
     @Override
@@ -167,7 +186,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         public Button button, btnShare;
         public CardView cardView;
         public ConstraintLayout expandableView;
-
 
 
         public MevViewHolder(View itemView) {

@@ -1,5 +1,6 @@
 package com.example.mevnovosti.ui.odrzivi_razvoj;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class OdrziviRazvojFragment extends Fragment implements SwipeRefreshLayou
 
         root = inflater.inflate(R.layout.fragment_odrzivi_razvoj, container, false);
 
+
         swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe_container_or);
         swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -50,6 +52,7 @@ public class OdrziviRazvojFragment extends Fragment implements SwipeRefreshLayou
 
         return root;
     }
+
 
 
     @Override
