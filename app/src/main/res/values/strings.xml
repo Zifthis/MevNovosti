@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Traži</string>
     <string name="search_hint">Hint</string>
+    <string name="datum_objave">Objavljeno:</string>
     <string name="menu_home">Novosti</string>
     <string name="menu_racunarstvo">Računarstvo</string>
     <string name="menu_odrzivi_razvoj">Održivi razoj</string>

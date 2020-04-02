@@ -2,8 +2,6 @@ package com.example.mevnovosti.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,17 +55,24 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         //animation bind
         holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.textViewNaslov.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
-        holder.textViewPodnaslov.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
-        holder.circleImage.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
+        holder.textViewTekst.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale));
 
         //biding views
         holder.textViewNaslov.setText(mevArrayListFiltered.get(position).getNaslov());
-        holder.textViewPodnaslov.setText(mevArrayListFiltered.get(position).getPodNaslov());
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
         holder.textViewDatumObajava.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
-        holder.textViewDatumNovosti.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumNovosti()));
 
+
+        /**
+         if(position == orID){
+         holder.cardView.setCardBackgroundColor(Color.parseColor("#DDAB99"));
+         }else if(position == racID) {
+         holder.cardView.setCardBackgroundColor(Color.parseColor("#ADCE82"));
+         }else if(position == mtsID){
+         holder.cardView.setCardBackgroundColor(Color.parseColor("#3E95C4"));
+         }
+         **/
 
         //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
@@ -85,22 +90,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
             }
         });
 
-
-        //expands CardView on button click
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.expandableView.getVisibility() == View.GONE) {
-                    TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
-                    holder.expandableView.setVisibility(View.VISIBLE);
-                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_down);
-                } else {
-                    TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
-                    holder.expandableView.setVisibility(View.GONE);
-                    holder.button.setBackgroundResource(R.drawable.ic_keyboard_arrow_up);
-                }
-            }
-        });
 
         //glide library
         String imagePath = "www.mev.hr" + mevModelArrayList.get(position).getSlika();
@@ -181,9 +170,9 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
     public class MevViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewNaslov, textViewPodnaslov, textViewTekst, textViewDatumObajava, textViewDatumNovosti;
+        public TextView textViewNaslov, textViewPodnaslov, textViewTekst, textViewDatumObajava;
         public ImageView imageView, circleImage;
-        public Button button, btnShare;
+        public Button btnShare;
         public CardView cardView;
         public ConstraintLayout expandableView;
 
@@ -191,9 +180,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         public MevViewHolder(View itemView) {
             super(itemView);
 
-            //expanded items
-            expandableView = (ConstraintLayout) itemView.findViewById(R.id.expandableView);
-            button = (Button) itemView.findViewById(R.id.btn);
+
             cardView = (CardView) itemView.findViewById(R.id.cardView);
 
             //share button
@@ -201,12 +188,10 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
             //always visible items
             textViewNaslov = (TextView) itemView.findViewById(R.id.textView_naslov);
-            textViewPodnaslov = (TextView) itemView.findViewById(R.id.textView_podnaslov);
             textViewTekst = (TextView) itemView.findViewById(R.id.textView_tekst);
             textViewDatumObajava = (TextView) itemView.findViewById(R.id.textView_datum_objave);
-            textViewDatumNovosti = (TextView) itemView.findViewById(R.id.textView_datum_novosti);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
-            circleImage = (ImageView) itemView.findViewById(R.id.circleImage);
+
 
         }
     }

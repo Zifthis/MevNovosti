@@ -1,5 +1,6 @@
 package com.example.mevnovosti.ui.racunarstvo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -45,6 +46,8 @@ public class RacunarstvoFragment extends Fragment implements SwipeRefreshLayout.
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
 
+
+        root.setBackgroundColor(Color.parseColor("#ADCE82"));
 
         return root;
 

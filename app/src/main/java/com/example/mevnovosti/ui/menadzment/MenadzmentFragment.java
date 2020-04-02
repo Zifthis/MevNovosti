@@ -2,6 +2,7 @@ package com.example.mevnovosti.ui.menadzment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -30,6 +32,7 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
     private MevAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View root;
+    private FragmentManager fragmentManager = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
 
+
+        root.setBackgroundColor(Color.parseColor("#3E95C4"));
 
         return root;
     }

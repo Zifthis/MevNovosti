@@ -1,6 +1,7 @@
 package com.example.mevnovosti.ui.home;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -41,6 +42,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
         MyApp.getInstance().setHomeMevAdapter(adapter);
+
+
+
 
         return root;
     }

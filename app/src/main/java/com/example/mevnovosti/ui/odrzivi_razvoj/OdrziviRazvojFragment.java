@@ -49,6 +49,7 @@ public class OdrziviRazvojFragment extends Fragment implements SwipeRefreshLayou
         recyclerView.setAdapter(adapter);
 
 
+        root.setBackgroundColor(Color.parseColor("#DDAB99"));
 
         return root;
     }
