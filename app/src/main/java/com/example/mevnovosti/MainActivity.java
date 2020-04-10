@@ -1,9 +1,6 @@
 package com.example.mevnovosti;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -104,6 +101,19 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 if (MyApp.getInstance().getHomeMevAdapter() != null) {
                     ((MevAdapter) MyApp.getInstance().getHomeMevAdapter()).getFilter().filter(query);
+
+                }
+                if (MyApp.getInstance().getMtsMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getMtsMevAdapter()).getFilter().filter(query);
+
+                }
+                if (MyApp.getInstance().getOsMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getOsMevAdapter()).getFilter().filter(query);
+
+                }
+                if (MyApp.getInstance().getRaMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getRaMevAdapter()).getFilter().filter(query);
+
                 }
                 return false;
             }
@@ -113,6 +123,19 @@ public class MainActivity extends AppCompatActivity {
                 //called when you type each letter in search
                 if (MyApp.getInstance().getHomeMevAdapter() != null) {
                     ((MevAdapter) MyApp.getInstance().getHomeMevAdapter()).getFilter().filter(newText);
+
+                }
+                if (MyApp.getInstance().getMtsMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getMtsMevAdapter()).getFilter().filter(newText);
+
+                }
+                if (MyApp.getInstance().getOsMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getOsMevAdapter()).getFilter().filter(newText);
+
+                }
+                if (MyApp.getInstance().getRaMevAdapter() != null) {
+                    ((MevAdapter) MyApp.getInstance().getRaMevAdapter()).getFilter().filter(newText);
+
                 }
                 return false;
             }

@@ -4,12 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +20,7 @@ import com.example.mevnovosti.R;
 import com.example.mevnovosti.adapter.MevAdapter;
 
 
-public class RacunarstvoFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class RacunarstvoFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
     private MevAdapter adapter;
@@ -42,10 +38,10 @@ public class RacunarstvoFragment extends Fragment implements SwipeRefreshLayout.
 
         adapter = new MevAdapter(root.getContext(), MyApp.getInstance().getMevRac());
         recyclerView = root.findViewById(R.id.text_racunarstvo);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
-
+        MyApp.getInstance().setRaMevAdapter(adapter);
 
         root.setBackgroundColor(Color.parseColor("#ADCE82"));
 
@@ -66,22 +62,23 @@ public class RacunarstvoFragment extends Fragment implements SwipeRefreshLayout.
             public void run() {
                 refreshArrayList();
             }
-        },1500);
+        }, 1500);
     }
 
 
     public void refreshArrayList() {
-        ((MainActivity)root.getContext()).getNovosi();
+        ((MainActivity) root.getContext()).getNovosi();
     }
 
 
     public void updateRacRecyclerView() {
 
         swipeRefreshLayout.setRefreshing(false);
-        Toast.makeText(getContext(),"Ažurirano", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Ažurirano", Toast.LENGTH_SHORT).show();
         adapter = new MevAdapter(root.getContext(), MyApp.getInstance().getMevRac());
         recyclerView = root.findViewById(R.id.text_racunarstvo);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),1);
+        MyApp.getInstance().setRaMevAdapter(adapter);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
     }

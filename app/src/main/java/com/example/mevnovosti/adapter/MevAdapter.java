@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -56,7 +55,8 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.textViewNaslov.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
         holder.textViewTekst.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
-        holder.cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale));
+        holder.cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_animation));
+
 
         //biding views
         holder.textViewNaslov.setText(mevArrayListFiltered.get(position).getNaslov());
@@ -170,16 +170,14 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
     public class MevViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewNaslov, textViewPodnaslov, textViewTekst, textViewDatumObajava;
-        public ImageView imageView, circleImage;
+        public TextView textViewNaslov, textViewTekst, textViewDatumObajava;
+        public ImageView imageView;
         public Button btnShare;
         public CardView cardView;
-        public ConstraintLayout expandableView;
 
 
         public MevViewHolder(View itemView) {
             super(itemView);
-
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
 

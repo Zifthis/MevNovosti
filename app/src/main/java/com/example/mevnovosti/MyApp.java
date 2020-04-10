@@ -32,13 +32,38 @@ public class MyApp extends Application {
 
     //home adapter for search
     public MevAdapter homeMevAdapter;
+    public MevAdapter raMevAdapter;
+    public MevAdapter osMevAdapter;
+    public MevAdapter mtsMevAdapter;
 
-    //getter homeAdapter
+    public MevAdapter getRaMevAdapter() {
+        return raMevAdapter;
+    }
+
+    public MevAdapter getOsMevAdapter() {
+        return osMevAdapter;
+    }
+
+    public MevAdapter getMtsMevAdapter() {
+        return mtsMevAdapter;
+    }
+
+    public void setRaMevAdapter(MevAdapter raMevAdapter) {
+        this.raMevAdapter = raMevAdapter;
+    }
+
+    public void setOsMevAdapter(MevAdapter osMevAdapter) {
+        this.osMevAdapter = osMevAdapter;
+    }
+
+    public void setMtsMevAdapter(MevAdapter mtsMevAdapter) {
+        this.mtsMevAdapter = mtsMevAdapter;
+    }
+
     public MevAdapter getHomeMevAdapter() {
         return homeMevAdapter;
     }
 
-    //setter homeAdapter
     public void setHomeMevAdapter(MevAdapter homeMevAdapter) {
         this.homeMevAdapter = homeMevAdapter;
     }

@@ -1,7 +1,6 @@
 package com.example.mevnovosti.ui.home;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import com.example.mevnovosti.MainActivity;
 import com.example.mevnovosti.MyApp;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.adapter.MevAdapter;
+
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView recyclerView;
@@ -41,9 +41,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
+
+
         MyApp.getInstance().setHomeMevAdapter(adapter);
-
-
 
 
         return root;
