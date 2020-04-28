@@ -2,6 +2,7 @@ package com.example.mevnovosti.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +32,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
     private Context context;
     private ArrayList<MevModel> mevModelArrayList;
     private ArrayList<MevModel> mevArrayListFiltered;
-
+    private FragmentManager manager = null;
 
     //the constructor keeps Context and ArrayList as parametars
     public MevAdapter(Context context, ArrayList mevModelArrayList) {
@@ -63,16 +66,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
         holder.textViewDatumObajava.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
 
-
-        /**
-         if(position == orID){
-         holder.cardView.setCardBackgroundColor(Color.parseColor("#DDAB99"));
-         }else if(position == racID) {
-         holder.cardView.setCardBackgroundColor(Color.parseColor("#ADCE82"));
-         }else if(position == mtsID){
-         holder.cardView.setCardBackgroundColor(Color.parseColor("#3E95C4"));
-         }
-         **/
 
         //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {

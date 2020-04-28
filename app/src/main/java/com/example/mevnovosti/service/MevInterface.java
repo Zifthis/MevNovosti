@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 
 public interface MevInterface {
 
-    @GET("PhpProject/mev.php")
+    @GET("sql.php")
     Call<ArrayList<MevModel>> getNovosi();
 
 }

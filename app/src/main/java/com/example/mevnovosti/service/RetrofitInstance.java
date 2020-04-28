@@ -8,7 +8,7 @@ public class RetrofitInstance {
 
 
     private static Retrofit retrofit = null;
-    public static String BASE_URL = "http://192.168.1.100:8080";
+    private static String BASE_URL = "https://mevnovosti.000webhostapp.com/";
 
     public static Retrofit getModel() {
 

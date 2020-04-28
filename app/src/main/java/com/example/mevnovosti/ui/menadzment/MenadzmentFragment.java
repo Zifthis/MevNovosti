@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,6 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
     private MevAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View root;
-    private CardView cardViewBackground;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,10 +44,8 @@ public class MenadzmentFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
         MyApp.getInstance().setMtsMevAdapter(adapter);
-        cardViewBackground = root.findViewById(R.id.cardView);
 
-        cardViewBackground.setBackgroundColor(Color.parseColor("#3E95C4"));
-
+        root.setBackgroundColor(Color.parseColor("#3E95C4"));
 
         return root;
     }
