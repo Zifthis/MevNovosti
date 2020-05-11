@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.mevnovosti.adapter.MevAdapter;
 import com.example.mevnovosti.model.MevModel;
+import com.example.mevnovosti.model.Novosti;
 import com.example.mevnovosti.service.MevInterface;
 import com.example.mevnovosti.service.RetrofitInstance;
 import com.example.mevnovosti.ui.home.HomeFragment;
@@ -38,11 +39,11 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ArrayList<MevModel> opcaLista = new ArrayList<>();
-    private ArrayList<MevModel> racLista = new ArrayList<>();
-    private ArrayList<MevModel> mtsLista = new ArrayList<>();
-    private ArrayList<MevModel> orLista = new ArrayList<>();
-    private ArrayList<MevModel> listMev;
+    private ArrayList<Novosti> opcaLista = new ArrayList<>();
+    private ArrayList<Novosti> racLista = new ArrayList<>();
+    private ArrayList<Novosti> mtsLista = new ArrayList<>();
+    private ArrayList<Novosti> orLista = new ArrayList<>();
+    private ArrayList<Novosti> listMev;
     private Fragment fragment = null;
     private FragmentTransaction ft = null;
     private FragmentManager manager = null;
@@ -135,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (MyApp.getInstance().getRaMevAdapter() != null) {
                     ((MevAdapter) MyApp.getInstance().getRaMevAdapter()).getFilter().filter(newText);
-
                 }
                 return false;
             }
@@ -156,13 +156,13 @@ public class MainActivity extends AppCompatActivity {
     public void getNovosi() {
 
         MevInterface mevInterface1 = RetrofitInstance.getModel().create(MevInterface.class);
-        mevInterface1.getNovosi().enqueue(new Callback<ArrayList<MevModel>>() {
+        mevInterface1.getNovosi().enqueue(new Callback<MevModel>() {
             @Override
-            public void onResponse(Call<ArrayList<MevModel>> call, Response<ArrayList<MevModel>> response) {
+            public void onResponse(Call<MevModel> call, Response<MevModel> response) {
                 if (response.isSuccessful()) {
-
                     //adding items on listaMev list with retrofit response received from server
-                    listMev = response.body();
+                    MevModel mevModel = response.body();
+                    listMev = mevModel.getNovosti();
 
 
                     opcaLista = new ArrayList<>();
@@ -202,16 +202,13 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-
             }
 
             @Override
-            public void onFailure(Call<ArrayList<MevModel>> call, Throwable t) {
+            public void onFailure(Call<MevModel> call, Throwable t) {
                 t.printStackTrace();
             }
         });
-
     }
-
 
 }

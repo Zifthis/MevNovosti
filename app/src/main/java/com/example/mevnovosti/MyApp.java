@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mevnovosti.adapter.MevAdapter;
 import com.example.mevnovosti.model.MevModel;
+import com.example.mevnovosti.model.Novosti;
 
 import java.util.ArrayList;
 
@@ -24,11 +25,11 @@ public class MyApp extends Application {
 
     }
 
-    public ArrayList<MevModel> mevModels = new ArrayList<>();
-    public ArrayList<MevModel> mevOpca = new ArrayList<>();
-    public ArrayList<MevModel> mevRac = new ArrayList<>();
-    public ArrayList<MevModel> mevOr = new ArrayList<>();
-    public ArrayList<MevModel> mevMts = new ArrayList<>();
+    public ArrayList<Novosti> mevModels = new ArrayList<>();
+    public ArrayList<Novosti> mevOpca = new ArrayList<>();
+    public ArrayList<Novosti> mevRac = new ArrayList<>();
+    public ArrayList<Novosti> mevOr = new ArrayList<>();
+    public ArrayList<Novosti> mevMts = new ArrayList<>();
 
     //home adapter for search
     public MevAdapter homeMevAdapter;
@@ -68,44 +69,44 @@ public class MyApp extends Application {
         this.homeMevAdapter = homeMevAdapter;
     }
 
-    public ArrayList<MevModel> getMevOpca() {
-        return mevOpca;
-    }
-
-    public void setMevOpca(ArrayList<MevModel> mevOpca) {
-        this.mevOpca = mevOpca;
-    }
-
-    public ArrayList<MevModel> getMevRac() {
-        return mevRac;
-    }
-
-    public void setMevRac(ArrayList<MevModel> mevRac) {
-        this.mevRac = mevRac;
-    }
-
-    public ArrayList<MevModel> getMevOr() {
-        return mevOr;
-    }
-
-    public void setMevOr(ArrayList<MevModel> mevOr) {
-        this.mevOr = mevOr;
-    }
-
-    public ArrayList<MevModel> getMevMts() {
-        return mevMts;
-    }
-
-    public void setMevMts(ArrayList<MevModel> mevMts) {
-        this.mevMts = mevMts;
-    }
-
-    public ArrayList<MevModel> getMevModels() {
+    public ArrayList<Novosti> getMevModels() {
         return mevModels;
     }
 
-    public void setMevModels(ArrayList<MevModel> mevModels) {
+    public void setMevModels(ArrayList<Novosti> mevModels) {
         this.mevModels = mevModels;
+    }
+
+    public ArrayList<Novosti> getMevOpca() {
+        return mevOpca;
+    }
+
+    public void setMevOpca(ArrayList<Novosti> mevOpca) {
+        this.mevOpca = mevOpca;
+    }
+
+    public ArrayList<Novosti> getMevRac() {
+        return mevRac;
+    }
+
+    public void setMevRac(ArrayList<Novosti> mevRac) {
+        this.mevRac = mevRac;
+    }
+
+    public ArrayList<Novosti> getMevOr() {
+        return mevOr;
+    }
+
+    public void setMevOr(ArrayList<Novosti> mevOr) {
+        this.mevOr = mevOr;
+    }
+
+    public ArrayList<Novosti> getMevMts() {
+        return mevMts;
+    }
+
+    public void setMevMts(ArrayList<Novosti> mevMts) {
+        this.mevMts = mevMts;
     }
 
     public static MyApp getInstance() {
