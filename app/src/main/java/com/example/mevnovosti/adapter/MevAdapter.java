@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.Novosti;
+import com.example.mevnovosti.ui.detalji.DetaljiActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,13 +40,12 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         this.novostiArrayList = novostiArrayList;
         this.mevArrayListFiltered = novostiArrayList;
 
+
     }
 
 
     public MevViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mev_list, parent, false);
-
-
         return new MevViewHolder(view);
     }
 
@@ -65,6 +66,20 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
         holder.textViewDatumObajava.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
 
+        //new activity
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context, DetaljiActivity.class);
+                i.putExtra("image_url", mevArrayListFiltered.get(position).getSlika());
+                i.putExtra("name_url", mevArrayListFiltered.get(position).getNaslov());
+                context.startActivity(i);
+
+            }
+        });
+
+
 
         //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
@@ -84,13 +99,13 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
 
         //glide library
-        String imagePath = "www.mev.hr" + novostiArrayList.get(position).getSlika();
+        String imagePath = novostiArrayList.get(position).getSlika();
         Glide.with(context)
                 .load(imagePath)
                 .placeholder(R.drawable.mev_logo)
                 .into(holder.imageView);
-
     }
+
 
     //time & date formating
     public static String dateAndTimeFormat(String date) {
@@ -166,6 +181,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         public ImageView imageView;
         public Button btnShare;
         public CardView cardView;
+        public LinearLayout linearLayout;
 
 
         public MevViewHolder(View itemView) {
@@ -176,12 +192,15 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
             //share button
             btnShare = (Button) itemView.findViewById(R.id.share);
 
+
+            //linearlayout
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_layout);
+
             //always visible items
             textViewNaslov = (TextView) itemView.findViewById(R.id.textView_naslov);
             textViewTekst = (TextView) itemView.findViewById(R.id.textView_tekst);
             textViewDatumObajava = (TextView) itemView.findViewById(R.id.textView_datum_objave);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
-
 
         }
     }

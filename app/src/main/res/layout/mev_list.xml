@@ -26,18 +26,21 @@
             android:orientation="horizontal">
 
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:id="@+id/thumb_image"
                 android:layout_width="110dp"
-                android:layout_height="110dp">
+                android:layout_height="110dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="7dp"
+                android:layout_marginLeft="6dp">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:scaleType="centerCrop" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:id="@+id/relative_mts"
