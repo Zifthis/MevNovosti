@@ -63,7 +63,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
         //biding views
         holder.textViewNaslov.setText(mevArrayListFiltered.get(position).getNaslov());
-        holder.textViewTekst.setText(mevArrayListFiltered.get(position).getTekst());
+        holder.textViewTekst.setText(mevArrayListFiltered.get(position).getPodNaslov());
         holder.textViewDatumObajava.setText(dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
 
         //new activity
@@ -74,6 +74,9 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
                 Intent i = new Intent(context, DetaljiActivity.class);
                 i.putExtra("image_url", mevArrayListFiltered.get(position).getSlika());
                 i.putExtra("name_url", mevArrayListFiltered.get(position).getNaslov());
+                i.putExtra("opis_url", mevArrayListFiltered.get(position).getTekst());
+                i.putExtra("datum_url", dateAndTimeFormat(mevArrayListFiltered.get(position).getDatumObjave()));
+
                 context.startActivity(i);
 
             }
@@ -191,7 +194,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
 
             //share button
             btnShare = (Button) itemView.findViewById(R.id.share);
-
 
             //linearlayout
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_layout);

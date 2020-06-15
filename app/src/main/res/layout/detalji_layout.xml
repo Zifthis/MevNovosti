@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="70"
         android:id="@+id/detalji_imageview"
-        android:src="@drawable/mev_icon"
-        tools:ignore="Suspicious0dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@drawable/mev_icon" />
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/detalji_naslov"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/detalji_opis"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="Mev detalji"
-        android:textSize="20sp"
-        android:textColor="#000"/>
+        android:text="Mev Naslov"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/detalji_opis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Mev opis"
+        android:textColor="#000"
+        android:textStyle="normal"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/detalji_datum"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:text="01.01.2000"
+        android:paddingRight="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:textStyle="italic"
+        android:typeface="sans"
+        android:textColor="@android:color/black"/>
 
 </LinearLayout>

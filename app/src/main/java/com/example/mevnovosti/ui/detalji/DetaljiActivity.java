@@ -1,7 +1,6 @@
 package com.example.mevnovosti.ui.detalji;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,37 +12,42 @@ import com.example.mevnovosti.R;
 
 public class DetaljiActivity extends AppCompatActivity {
 
-    private static final String TAG = "DetaljiActivity";
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalji_layout);
-        Log.d(TAG, "onCreate: started");
+
 
         getIncomingIntent();
     }
 
-    public void getIncomingIntent(){
-        Log.d(TAG, "getIncomingIntent: checking for any intents.");
-        if(getIntent().hasExtra("image_url") && getIntent().hasExtra("name_url")){
-            Log.d(TAG, "getIncomingIntent: have found extras");
+    public void getIncomingIntent() {
+        if (getIntent().hasExtra("image_url") && getIntent().hasExtra("name_url") && getIntent().hasExtra("opis_url") && getIntent().hasExtra("datum_url")) {
 
             String imageUrl = getIntent().getStringExtra("image_url");
             String nameUrl = getIntent().getStringExtra("name_url");
+            String opisUrl = getIntent().getStringExtra("opis_url");
+            String datumUrl = getIntent().getStringExtra("datum_url");
 
-            setImage(imageUrl,nameUrl);
+
+            setImage(imageUrl, nameUrl, opisUrl, datumUrl);
         }
     }
 
-    private void setImage(String imageUrl, String nameUrl){
-        TextView naslov = findViewById(R.id.detalji_opis);
+    private void setImage(String imageUrl, String nameUrl, String opisUrl, String datumUrl) {
+        TextView naslov = findViewById(R.id.detalji_naslov);
+        TextView opis = findViewById(R.id.detalji_opis);
+        TextView datum = findViewById(R.id.detalji_datum);
         naslov.setText(nameUrl);
+        opis.setText(opisUrl);
+        datum.setText(datumUrl);
 
-        ImageView image = (ImageView)findViewById(R.id.detalji_imageview);
+
+        ImageView image = (ImageView) findViewById(R.id.detalji_imageview);
         Glide.with(this)
                 .asBitmap()
+                .placeholder(R.drawable.mev_logo)
                 .load(imageUrl)
                 .into(image);
     }
