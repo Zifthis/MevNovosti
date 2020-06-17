@@ -83,7 +83,6 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         });
 
 
-
         //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

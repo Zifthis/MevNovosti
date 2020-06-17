@@ -5,6 +5,10 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="_22sp">25sp</dimen>
+    <dimen name="_17sp">19sp</dimen>
+    <dimen name="_15sp">18sp</dimen>
+    <dimen name="_13sp">15sp</dimen>
     <dimen name="_13dp">16dp</dimen>
     <dimen name="_10dp">15dp</dimen>
     <dimen name="_8dp">11dp</dimen>

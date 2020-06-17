@@ -16,6 +16,13 @@
     <color name="content_text_color">#999da4</color>
     <color name="white">#FFFFFF</color>
 
+    //boja teksta
+    <color name="dark">	#101010	</color>
+    <color name="gray">#505050</color>
+    <color name="light">#A9A9A9</color>
+
+
+
     //boja smjerova
     <color name="racunarstvo">#ADCE82</color>
     <color name="mts">#3E95C4</color>

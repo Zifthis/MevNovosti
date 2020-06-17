@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.fragment.app.Fragment;
 
 import com.example.mevnovosti.adapter.MevAdapter;
-import com.example.mevnovosti.model.MevModel;
 import com.example.mevnovosti.model.Novosti;
 
 import java.util.ArrayList;
