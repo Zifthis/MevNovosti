@@ -22,9 +22,12 @@ import com.example.mevnovosti.R;
 import com.example.mevnovosti.model.Novosti;
 import com.example.mevnovosti.ui.detalji.DetaljiActivity;
 
+import java.security.cert.CollectionCertStoreParameters;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.TimeZone;
 
 public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> implements Filterable {
@@ -83,6 +86,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
         });
 
 
+
         //connecting share button with code
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +133,7 @@ public class MevAdapter extends RecyclerView.Adapter<MevAdapter.MevViewHolder> i
             return newDate;
         }
     }
+
 
 
     //size of fragmets

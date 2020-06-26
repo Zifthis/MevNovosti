@@ -1,9 +1,11 @@
 package com.example.mevnovosti.ui.detalji;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +19,8 @@ public class DetaljiActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalji_layout);
+
+
 
 
         getIncomingIntent();
@@ -51,5 +55,9 @@ public class DetaljiActivity extends AppCompatActivity {
                 .load(imageUrl)
                 .into(image);
     }
+
+
+
+
 
 }

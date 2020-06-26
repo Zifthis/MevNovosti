@@ -3,6 +3,8 @@ package com.example.mevnovosti.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Comparator;
+
 public class Novosti {
 
     @SerializedName("id_novosti")
@@ -68,5 +70,6 @@ public class Novosti {
     public String getTipNovosti() {
         return tipNovosti;
     }
+
 
 }

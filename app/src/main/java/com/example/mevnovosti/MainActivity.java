@@ -1,13 +1,18 @@
 package com.example.mevnovosti;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -30,6 +35,9 @@ import com.example.mevnovosti.ui.racunarstvo.RacunarstvoFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,14 +89,15 @@ public class MainActivity extends AppCompatActivity {
         manager = getSupportFragmentManager();
         ft = manager.beginTransaction();
         ft.replace(R.id.nav_host_fragment, fragment).commit();
-
         manager.findFragmentById(R.id.nav_host_fragment);
+
 
 
         getNovosi();
 
 
     }
+
 
 
     //search
@@ -159,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
         MevInterface mevInterface1 = RetrofitInstance.getModel().create(MevInterface.class);
         mevInterface1.getNovosi().enqueue(new Callback<MevModel>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<MevModel> call, Response<MevModel> response) {
                 if (response.isSuccessful()) {
@@ -166,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
                     MevModel mevModel = response.body();
                     listMev = mevModel.getNovosti();
 
+                    //Sort retrofit data list by date.
+                    listMev.sort(Comparator.comparing(Novosti::getDatumObjave).reversed());
 
                     opcaLista = new ArrayList<>();
                     racLista = new ArrayList<>();

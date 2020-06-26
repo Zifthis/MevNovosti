@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MevModel {
 
@@ -17,5 +18,7 @@ public class MevModel {
     public void setNovosti(ArrayList<Novosti> novosti) {
         this.novosti = novosti;
     }
+
+
 }
 
