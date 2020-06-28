@@ -51,7 +51,7 @@ public class DetaljiActivity extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.detalji_imageview);
         Glide.with(this)
                 .asBitmap()
-                .placeholder(R.drawable.mev_logo)
+                .placeholder(R.drawable.mev_icon)
                 .load(imageUrl)
                 .into(image);
     }
